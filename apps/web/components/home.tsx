@@ -212,11 +212,9 @@ export function SocialGallery() {
 export default function HomePage() {
   return (
     <>
+      <Hero />
       <MobileDiscovery />
-      <div className="desktop-hero">
-        <Hero />
-        <Benefits />
-      </div>
+      <Benefits />
       <Featured />
       <StoryBlock />
       <div className="bottom-collage">

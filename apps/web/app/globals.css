@@ -2954,12 +2954,102 @@ td select {
   .bubble-4 img {
     transform: scale(1.4);
   }
-  .category-bubbles small {
-    font-size: 10px;
-    font-weight: 500;
+  .hero {
+    height: clamp(340px, 90vw, 400px);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    margin: 0;
+    width: 100%;
+    max-width: 100vw;
   }
-  .desktop-hero {
+  .hero-art {
+    background-position: 72% center;
+    background-size: cover;
+  }
+  .hero-content {
+    position: relative;
+    width: 480px;
+    height: 100%;
+    padding: 24px 0 0 16px;
+    transform: scale(min(0.85, calc((100vw - 28px) / 480)));
+    transform-origin: top left;
+  }
+  .cutout-title {
+    width: 480px;
+    height: 365px;
+  }
+  .hero-label {
+    top: 14px;
+    right: 12px;
+    width: 90px;
+    height: 120px;
+    padding-top: 16px;
+    transform: rotate(10deg) scale(0.72);
+    transform-origin: top right;
+  }
+  .hero-label:before {
+    left: 10px;
+    width: 70px;
+    height: 20px;
+  }
+  .hero-label span {
+    font-size: 24px;
+    line-height: 0.95;
+  }
+  .hero-label svg {
+    width: 30px;
+    height: 42px;
+    bottom: 6px;
+    right: 8px;
+  }
+  .hero-side-note,
+  .hero-tape,
+  .hero-star-c {
     display: none;
+  }
+  .hero-cta {
+    bottom: 28px;
+    left: 68px;
+  }
+  .benefits {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding: 14px 16px;
+    min-height: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .benefits::-webkit-scrollbar {
+    display: none;
+  }
+  .benefits:before {
+    display: none;
+  }
+  .benefits > div {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    gap: 10px;
+    background: #fbf8ee;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #e7dcbf;
+  }
+  .benefits svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .benefits strong {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .benefits small {
+    font-size: 10px;
+    margin-top: 2px;
+    white-space: nowrap;
   }
   .featured {
     margin: 0;
