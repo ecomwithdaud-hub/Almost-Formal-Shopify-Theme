@@ -53,10 +53,16 @@ app.use((req, res, next) => {
 app.use("/api", (req, res, next) => {
   if (!["GET", "HEAD", "OPTIONS"].includes(req.method)) {
     const origin = req.get("origin");
-    if (
-      origin &&
-      origin !== (process.env.APP_ORIGIN || "http://localhost:3000")
-    )
+    const host = req.get("x-forwarded-host") || req.get("host");
+    const allowedOrigin = process.env.APP_ORIGIN || "http://localhost:3000";
+    const isSameHost = Boolean(
+      origin && host && (origin === `https://${host}` || origin === `http://${host}`),
+    );
+    const isVercelDomain = Boolean(
+      process.env.VERCEL && origin && /^https:\/\/[a-zA-Z0-9-._]+\.vercel\.app$/.test(origin),
+    );
+
+    if (origin && origin !== allowedOrigin && !isSameHost && !isVercelDomain)
       return res.status(403).json({ error: "Request origin is not allowed." });
     if (req.get("sec-fetch-site") === "cross-site")
       return res
@@ -619,3 +625,6 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err);
   res.status(500).json({ error: "Something went wrong. Please try again." });
 });
+
+export default app;
+
